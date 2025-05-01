@@ -20,7 +20,7 @@ If you are unable to load this data for any reason, you can find a copy in `raw_
 
 ### 2. Load the patrol data
 This is a static excel file stored in the repo at this location: `raw_data/derbyshire_patrol_data.xlsx`.
-You require the April, May and June data.
+You require the data for April, May and June 2024.
 
 
 ### 3. Clean and filter the data.
