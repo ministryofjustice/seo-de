@@ -7,7 +7,7 @@ Derbyshire police force have supplied some sample patrol data and you need to co
 
 We expect this pilot to expand to include more police forces and various time frames. Your code should be written so it can be easily extended and re-used.
 
-You have 5 tasks to complete over the next 45 minutes. You are free to write and structure your code as you see fit. You will be required to present your solution, describe what you have done, how you have done it and why you made each choice.
+You have 4 tasks to complete over the next 45 minutes. You are free to write and structure your code as you see fit. You will be required to present your solution, describe what you have done, how you have done it and why you made each choice.
 
 
 ### 1. Ingest the public 'stop and search' data
@@ -19,8 +19,7 @@ If you are unable to load this data for any reason, you can find a copy in `raw_
 
 
 ### 2. Load the patrol data
-This is a static excel file stored in the repo at this location: `raw_data/derbyshire_patrol_data.xlsx`.
-You require the data for April, May and June 2024.
+This is a static csv file stored in the repo at this location: `raw_data/derbyshire_patrol_data.csv`.
 
 
 ### 3. Clean and filter the data.
@@ -42,52 +41,3 @@ The analysts require a dataset containing the following data:
 - The total number of 'stop and searches' occuring that day
 
 Write out this data set to a new `output_data` folder in a format that can be ingested into a database.
-
-
-### 5. Test this function
-A colleague has written the below function to take some data on 'stop and search' outcomes and identify which resulted in an arrest and which occurred within the desired timeframe.
-
-Leaving the function as it is, can you write tests to validate that this function operates as currently designed/ written.
-
-```python
-from datetime import datetime
-
-def find_arrests(outcome_data):
-    arrests = {}
-    for incident, incident_data in outcome_data.items():
-        date = datetime.strptime(incident_data["date"], '%Y-%m-%d')
-        year = date.year
-        month = date.month
-        
-        if year != 2024 or month not in [4, 5, 6]:
-            raise ValueError("Invalid date")
-        
-        if incident_data["outcome"] == "arrest":
-            arrests[incident] = incident_data
-        
-    return arrests
-
-
-outcome_data = {
-    "incident_1": {
-        "date": "2024-04-01",
-        "outcome": "no_action"
-    },
-    "incident_2": {
-        "date": "2024-05-01",
-        "outcome": "arrest"
-    },
-    "incident_3": {
-        "date": "2023-06-01",
-        "outcome": "arrest"
-    },
-    "incident_4": {
-        "date": "2024-07-01",
-        "outcome": "arrest"
-    },
-    "incident_5": {
-        "date": "2024-07-01",
-        "outcome": "arrest"
-    }
-}
-```
